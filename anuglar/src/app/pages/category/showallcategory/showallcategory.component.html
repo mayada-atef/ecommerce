@@ -1,0 +1,45 @@
+<!-- <p>showallcategory works!</p> -->
+<!-- {{categories|json}} -->
+<section class="container">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <h4 class="col-md-8">Category DataTable</h4>
+
+                <button class="btn btn-primary col-md-3" routerLink="/category/add">Add category </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class=" table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Category Id</th>
+                        <th>Category Name</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of categories; let i=index">
+                        <td>{{c._id}}</td>
+                        <td>{{c.name}}</td>
+                        <th>
+                            <button class="btn btn-warning  mx-1" (click)="createDivEdit(c._id)"
+                                *ngIf="c._id!=categoryId ||!divedit">Edit</button>
+                            <div class="alert alert-warning" *ngIf="divedit&&c._id==categoryId">
+                                <form [formGroup]="editcategoryform" (submit)="hadleEditCategory()">
+                                    <input type="text" class="form-control" formControlName="name">
+                                    <button class="btn btn-warning" type="submit">Edit</button>
+                                </form>
+                            </div>
+                            <!-- <button class="btn btn-warning  mx-1" routerLink="/category/edit/{{c._id}}">Edit</button> -->
+                            <button class="btn btn-danger  mx-1" (click)="delCategory(c._id,i)">Delete</button>
+                        </th>
+
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+            </div>
+        </div>
+    </div>
+</section>

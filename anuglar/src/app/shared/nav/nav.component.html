@@ -1,0 +1,65 @@
+<div class="text-center text-white bg-dark">
+    <span class="heading-xxs letter-spacing-xl">
+        ⚡️ Happy Holiday Deals on Everything ⚡️
+    </span>
+</div>
+<nav class="navbar  navbar-expand-lg navbar-light bg-white mb-5">
+    <!-- fixed-top -->
+    <div class="container">
+        <a class="navbar-brand logo-text" routerLink="/">online shopping </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- {{data.userislogin}} -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- home -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/">Home</a>
+                </li>
+                <!-- category -->
+                <li class="nav-item dropdown" *ngIf="!data.adminislogin">
+                    <a class="nav-link dropdown-toggle" routerLink="/" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" (click)="showcategory()">
+                        Category
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li *ngFor="let cate of categories">
+                            <a class="dropdown-item" routerLink="/category/products/{{cate._id}}"> {{cate.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- sign up -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/register"
+                        *ngIf="(!data.userislogin&&!data.adminislogin)">SignUp</a>
+                </li>
+                <!-- login -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/user/login"
+                        *ngIf="(!data.userislogin&&!data.adminislogin)">login</a>
+                </li>
+                <!-- login admin -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/loginadmin"
+                        *ngIf="(!data.userislogin &&!data.adminislogin) ">login Admin</a>
+                </li>
+                <li class="nav-item" *ngIf="(data.userislogin || data.adminislogin)">
+                    <a class="nav-link" (click)="handlelogout()">log out</a>
+                </li>
+                <li class="nav-item" *ngIf="(data.userislogin ||data.adminislogin)">
+                    <span class="nav-link">{{data.user.name}}</span>
+                </li>
+                <button class="btn btn-outline-dark" routerLink="/cart/products" type="submit"
+                    *ngIf="data.adminislogin||data.userislogin">
+
+                    myCart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                </button>
+            </ul>
+        </div>
+    </div>
+</nav>

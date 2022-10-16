@@ -1,0 +1,41 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">Login Admin</h3>
+                </div>
+                <div class="card-body">
+                    <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
+                        <div class="mb-3">
+                            <input class="form-control mb-3" name="email" placeholder="email" #email="ngModel" email
+                                required ngModel>
+                            <div class="alert alert-danger my-2"
+                                *ngIf="email.invalid&& (email.dirty || loginForm.submitted)">
+                                <li *ngIf="email.errors?.['required']">* required</li>
+                                <li *ngIf="email.errors?.['email']">* Email invalid format</li>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <input class="form-control" name="password" placeholder="passsword" #password="ngModel"
+                                    required minlength="6" maxlength="20" ngModel>
+                                <div class="alert alert-danger my-2"
+                                    *ngIf="password.invalid&& (password.dirty || loginForm.submitted)">
+                                    <li *ngIf="password.errors?.['required']">* required</li>
+                                    <li *ngIf="password.errors?.['minlength']">* minimum chars is 6</li>
+                                    <li *ngIf="password.errors?.['maxlength']">* maximum chars is 20
+                                    </li>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <button class="btn btn-primary" type="submit">login Admin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

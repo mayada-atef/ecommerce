@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-3" style="max-width: 540px;" *ngFor="let pro of products; let i=index">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://via.placeholder.com/600/771796" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">&nbsp;{{pro.name}}</h5>
+                            <p class="card-text">
+                                <br> price: &nbsp;{{pro.price}}
+                            </p>
+                            <p class="card-text"><small class="text-muted">
+                                    size:&nbsp;{{pro.size}}</small></p>
+                            <button class="btn btn-danger me-4" (click)="handleDelete(pro._id, i)">Delete</button>
+
+                            <button class="btn btn-danger" (click)="handleBtn('-')"> - </button>
+                            <span class="h4 text-primary mx-3">{{val}}</span>
+                            <!-- {{cartproducts[i].quantity}} -->
+                            <button class="btn btn-success" (click)="handleBtn('+')"> + </button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">Total price</div>
+    </div>
+
+</div>

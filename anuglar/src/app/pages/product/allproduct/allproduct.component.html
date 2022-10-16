@@ -1,0 +1,48 @@
+<section class="container">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <h4 class="col-md-8">product DataTable</h4>
+
+                <button class="btn btn-primary col-md-3" routerLink="/product/add">Add product</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class=" table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>categoryId</th>
+                        <th>Price</th>
+                        <th>size</th>
+                        <th>model</th>
+                        <th>color</th>
+                        <th>material</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pro of products; let i=index">
+                        <td>{{pro.name}}</td>
+                        <td>{{pro.categoryId}}</td>
+                        <td>{{pro.price}}</td>
+                        <td>{{pro.size}}</td>
+
+                        <td>{{pro.specification[0]?.model}}</td>
+                        <td>{{pro.specification[0]?.color}}</td>
+                        <td>{{pro.specification[0]?.material}}</td>
+
+                        <th>
+                            <button class="btn btn-success mx-1" routerLink="/product/{{pro._id}}">Show</button>
+                            <button class="btn btn-warning  mx-1" routerLink="/product/edit/{{pro._id}}">Edit</button>
+                            <button class="btn btn-danger  mx-1" (click)="deleteProduct(pro._id,i)">Delete</button>
+                        </th>
+
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+            </div>
+        </div>
+    </div>
+</section>

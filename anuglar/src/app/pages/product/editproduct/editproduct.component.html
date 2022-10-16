@@ -1,0 +1,61 @@
+<!-- <form [formGroup]="loginadminForm" (ngSubmit)="handleLoginadmin()">
+    <input formControlName="email" name="email" placeholder="your email">
+    <input formControlName="password" name="password" placeholder="your password">
+    <button class="btn btn-primary" type="submit">login</button>
+
+</form> -->
+<section class="container my-5 ">
+    <form [formGroup]="editproduct" (ngSubmit)="handleEdit()" class="row g-3">
+        <div class="col-md-4">
+            <label for="name" class="form-label">name</label>
+            <input type="text" formControlName="name" class="form-control" id="name">
+        </div>
+        <div class="col-md-4">
+            <label for="price" class="form-label">price</label>
+            <input type="text" formControlName="price" class="form-control" id="price">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Size</label>
+            <select id="inputState" formControlName="size" class="form-select">
+                <option selected>Choose...</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <label for="description" class="form-label">description</label>
+            <input type="text" formControlName="description" class="form-control" id="description"
+                placeholder="description">
+        </div>
+        <div class="col-12">
+            <label for="details" class="form-label">details</label>
+            <input type="text" class="form-control" formControlName="details" id="details" placeholder="details">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupFile01">Upload</label>
+            <input type="file" class="form-control" id="inputGroupFile01">
+        </div>
+        <div formGroupName="specification">
+
+            <div class="col-md-4">
+                <label for="model" class="form-label">model</label>
+                <input type="text" class="form-control" formControlName="model" id="model">
+
+            </div>
+            <div class="col-md-4">
+                <label for="color" class="form-label">Color</label>
+                <input type="text" class="form-control" formControlName="color" id="color">
+                <!-- value={{product.specification[0]?.color}} -->
+            </div>
+            <div class="col-md-4">
+                <label for="material" class="form-label">material</label>
+                <input type="text" class="form-control" formControlName="material" id="material">
+                <!-- value={{product.specification[0]?.material}} -->
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+
+    </form>
+</section>

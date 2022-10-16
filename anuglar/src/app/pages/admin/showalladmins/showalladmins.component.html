@@ -1,0 +1,36 @@
+<section class="container">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <h4 class="col-md-8">Admin DataTable</h4>
+                <button class="btn btn-primary col-md-3" routerLink="/admin/add">Add admin</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class=" table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>email</th>
+                        <th>age</th>
+                        <th>phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of admins; let i=index">
+                        <td>{{admin.name}}</td>
+                        <td>{{admin.email}}</td>
+                        <td>{{admin.age}}</td>
+                        <td>{{admin.phone}}</td>
+                        <th>
+                            <button class="btn btn-danger  mx-1" (click)="delAdmin(admin._id,i)">Delete</button>
+                        </th>
+
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+            </div>
+        </div>
+    </div>
+</section>

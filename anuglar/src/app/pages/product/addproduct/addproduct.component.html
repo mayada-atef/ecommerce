@@ -1,0 +1,72 @@
+<section class="container my-5 ">
+    <form [formGroup]="addproductForm " (ngSubmit)="handleAdd()" class="row g-3">
+        <div class="col-md-6">
+            <label for="categoryId" class="form-label">categoryId</label>
+            <input type="text" formControlName="categoryId" class="form-control" id="categoryId">
+            <div class="alert alert-danger"
+                *ngIf="categoryId?.invalid &&(issumbitted|| categoryId?.dirty|| categoryId?.touched)">
+                <li *ngIf="categoryId?.errors?.['required']">required</li>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="name" class="form-label">name</label>
+            <input type="text" formControlName="name" class="form-control" id="name">
+            <div class="alert alert-danger" *ngIf="name?.invalid &&(issumbitted|| name?.dirty|| name?.touched)">
+                <li *ngIf="name?.errors?.['required']">required</li>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="price" class="form-label">price</label>
+            <input type="text" formControlName="price" class="form-control" id="price">
+            <div class="alert alert-danger" *ngIf="price?.invalid &&(issumbitted|| price?.dirty|| price?.touched)">
+                <li *ngIf="price?.errors?.['required']">required</li>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Size</label>
+            <select id="inputState" formControlName="size" class="form-select">
+                <option selected>Choose...</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="inputGroupFile01" class="form-label">Upload</label>
+            <input type="file" class="form-control" id="inputGroupFile01">
+        </div>
+        <div formGroupName="specification" class="row">
+
+            <div class="col-md-4">
+                <label for="model" class="form-label">model</label>
+                <input type="text" class="form-control" formControlName="model" id="model">
+
+            </div>
+            <div class="col-md-4">
+                <label for="color" class="form-label">Color</label>
+                <input type="text" class="form-control" formControlName="color" id="color">
+            </div>
+            <div class="col-md-4">
+                <label for="material" class="form-label">material</label>
+                <input type="text" class="form-control" formControlName="material" id="material">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="description" class="form-label">description</label>
+            <input type="text" formControlName="description" class="form-control" id="description"
+                placeholder="description">
+        </div>
+        <div class="col-md-6">
+            <label for="details" class="form-label">details</label>
+            <input type="text" class="form-control" formControlName="details" id="details" placeholder="details">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Add</button>
+
+    </form>
+</section>

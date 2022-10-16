@@ -1,0 +1,80 @@
+<!-- <p>addadmin works!</p> -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4"> add admin</h3>
+                </div>
+                <div class="card-body">
+                    <form #addAdminform="ngForm" (ngSubmit)="addAdmin(addAdminform)">
+                        <div class="form-floating mb-3 ">
+                            <input class="form-control" id="inputName" ngModel type="text" name="name" #name="ngModel"
+                                required maxlength="30" minlength="2" placeholder="Enter name" />
+                            <label for="inputName">name</label>
+                            <div class="alert alert-danger"
+                                *ngIf="name.invalid&&(name.touched||email.dirty||addAdminform.submitted)">
+                                <li *ngIf="name.errors?.['required']">*required</li>
+                                <li *ngIf="name.errors?.['maxlength']">max chars 30</li>
+                                <li *ngIf="name.errors?.['minlength']">min char 2</li>
+                            </div>
+
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="inputEmail" ngModel type="email" name="email"
+                                #email="ngModel" required email placeholder="name@example.com" />
+
+                            <label for="inputEmail">Email address</label>
+                            <div class="alert alert-danger"
+                                *ngIf="email.invalid&&(email.touched||email.dirty||addAdminform.submitted)">
+                                <li *ngIf="email.errors?.['required']">*required</li>
+                                <li *ngIf="email.errors?.['email']">invalid email</li>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="inputPhone" name="phone" [(ngModel)]="admindata.phone"
+                                #phone="ngModel" (input)="checkphone(admindata.phone)" minlength="11" maxlength="11"
+                                required placeholder="your phone" />
+                            <label for="inputPhone">Phone</label>
+                            <div class="alert alert-danger"
+                                *ngIf="specialerror!='' &&(phone.dirty||addAdminform.submitted)">
+                                <li>{{specialerror}}</li>
+
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="inputAge" ngModel type="number" name="age" #age="ngModel"
+                                required min="20" max="60" placeholder="age" />
+                            <label for="inputAge">Age</label>
+                            <div class="alert alert-danger"
+                                *ngIf="age.invalid&&(age.touched||age.dirty||addAdminform.submitted)">
+                                <li *ngIf="age.errors?.['required']">*required</li>
+                                <li *ngIf="age.errors?.['min']">minmum 20</li>
+                                <li *ngIf="age.errors?.['max']">max 60</li>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="inputPassword" ngModel type="password" name="password"
+                                #password="ngModel" required minlength="6" placeholder="Create a password" />
+                            <label for="inputPassword">Password</label>
+                            <div class="alert alert-danger"
+                                *ngIf="password.invalid&&(password.touched||password.dirty||addAdminform.submitted)">
+                                <li *ngIf="password.errors?.['required']">*required</li>
+                                <li *ngIf="password.errors?.['minlength']">minlength 6</li>
+
+                            </div>
+                        </div>
+                        <div class="mt-4 mb-0">
+                            <div class="d-grid"><button class="btn btn-primary btn-block" type="submit">Add admin
+                            </button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
